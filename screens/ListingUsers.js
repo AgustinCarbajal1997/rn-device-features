@@ -2,10 +2,11 @@ import React from 'react'
 import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native'
 import { useSelector } from 'react-redux'
 
-const Item = ({ name, surname }) => (
+const Item = ({ name, surname, image }) => (
     <View style={styles.item}>
         <Text>{name}</Text>
         <Text>{surname}</Text>
+        <Text>{image}</Text>
     </View>
 )
 
@@ -15,7 +16,7 @@ const ListingUsers = () => {
     const listUser = useSelector(state => state.users.users);
     console.log(listUser);
     const renderItem = ({ item }) => (
-        <Item name={item.name} surname={item.surname}/>
+        <Item name={item.name} surname={item.surname} image={item.image}/>
     )
     return (
         <SafeAreaView style={styles.container}>

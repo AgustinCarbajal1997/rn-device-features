@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 const UsersDb = (state = INITIAL_STATE, action) => {
     switch (action.type){
         case ADD_USER:
-            const newUser = new UserModel(Date.now(), action.payload.name, action.payload.surname)
+            const newUser = new UserModel(Date.now(), action.payload.name, action.payload.surname, action.payload.image)
             const addingUser = [...state.users, newUser]
             return {...state, users:addingUser}
         default:

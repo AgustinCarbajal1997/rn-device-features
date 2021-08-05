@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 import { useDispatch, connect } from 'react-redux'
 import { addUser } from '../store/actions/users.action'
+import ImageSelector from '../components/imageSelector'
+
+
+
 const INITIAL_STATE = {
     id:null,
     name:"",
@@ -10,6 +14,7 @@ const INITIAL_STATE = {
 
 const CreateUser = () => {
     const [userName, setUserName] = useState(INITIAL_STATE);
+    const [selectImage, setSelectImage] = useState()
     const dispatch = useDispatch();
     
 
@@ -21,10 +26,13 @@ const CreateUser = () => {
     }
 
     const onHandleSubmit = () => {
-        dispatch(addUser(userName))
+        let name = userName.name;
+        let surname = userName.surname;
+        dispatch(addUser(name,surname, selectImage))
 
     }
     
+    const onHandleImageTaken = path => setSelectImage(path);
     
 
     return (
@@ -43,6 +51,7 @@ const CreateUser = () => {
                 onChangeText={text => onChangeUserName(text,"surname")}
                 value={userName.surname}
             />
+            <ImageSelector onImage={onHandleImageTaken}/>
             <Button title="Crear usuario" color="red" onPress={onHandleSubmit}/>
         </View>
     )
