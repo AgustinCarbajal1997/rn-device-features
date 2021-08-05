@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, FlatList, SafeAreaView, Image } from 'react-native'
 import { useSelector } from 'react-redux'
 
 const Item = ({ name, surname, image }) => (
     <View style={styles.item}>
         <Text>{name}</Text>
         <Text>{surname}</Text>
-        <Text>{image}</Text>
+        <Image style={styles.image} source={{ uri:image }} />
     </View>
 )
 
@@ -40,5 +40,10 @@ const styles = StyleSheet.create({
         backgroundColor:"gray",
         padding:20,
         marginVertical:8
+    },
+    image:{
+        width:70,
+        height:70,
+        borderRadius:35
     }
 })
