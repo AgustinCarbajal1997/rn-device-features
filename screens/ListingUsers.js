@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux'
 
 const Item = ({ name, surname, image }) => (
     <View style={styles.item}>
-        <Text>{name}</Text>
-        <Text>{surname}</Text>
         <Image style={styles.image} source={{ uri:image }} />
+        <View style={styles.userData}>
+            <Text style={styles.userDataText}>{name}</Text>
+            <Text style={styles.userDataText}>{surname}</Text>
+        </View>
+
     </View>
 )
 
@@ -37,13 +40,23 @@ const styles = StyleSheet.create({
         flex:1
     },
     item:{
-        backgroundColor:"gray",
+        backgroundColor:"#FFCCBB",
         padding:20,
-        marginVertical:8
+        marginVertical:8,
+        flexDirection:"row",
+        alignItems:"center",
+        
     },
     image:{
         width:70,
         height:70,
         borderRadius:35
+    },
+    userData:{
+        paddingLeft:60,
+        
+    },
+    userDataText:{
+        fontSize:25
     }
 })

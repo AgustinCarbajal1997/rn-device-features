@@ -36,8 +36,7 @@ const CreateUser = () => {
     
 
     return (
-        <View >
-            <Text>Nuevo usuario</Text>
+        <View style={styles.container}>
             <TextInput 
                 style={styles.input}
                 
@@ -61,15 +60,14 @@ export default connect() (CreateUser)
 
 
 const styles = StyleSheet.create({
-    // container:{
-    //     flex:1,
-    //     justifyContent:"center",
-    //     alignItems:"center"
-    // },
+    container:{
+        flex:1,
+        justifyContent:"center"
+    },
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
+        borderBottomWidth: 1,
         padding: 10,
       },
 })
