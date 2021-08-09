@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, FlatList, SafeAreaView, Image } from 'react-native'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import * as userActions from '../store/actions/users.action'
+
 
 const Item = ({ name, surname, image }) => (
     <View style={styles.item}>
@@ -16,8 +18,17 @@ const Item = ({ name, surname, image }) => (
 
 
 const ListingUsers = () => {
+    const dispatch = useDispatch();
     const listUser = useSelector(state => state.users.users);
-    console.log(listUser);
+    
+
+    
+    useEffect(() => {
+        dispatch(userActions.loadUser())
+    }, [])
+
+
+
     const renderItem = ({ item }) => (
         <Item name={item.name} surname={item.surname} image={item.image}/>
     )
